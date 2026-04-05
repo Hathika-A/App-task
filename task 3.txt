@@ -1,0 +1,296 @@
+splashscreen
+
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network("https://play-lh.googleusercontent.com/UgIeBr9XhC3Vuknt-0avy4pqRlikVQ6_dq6Hp23iyTUFA-4z79n-jliK5dEzstXK2yI=w600-h300-pc0xffffff-pd",height:120),
+           SizedBox(height:20),
+            Text("Prime Travel App",style:TextStyle(fontSize:20,
+             fontWeight:FontWeight.w500,
+             ),
+            ),
+           ]
+         )
+        )
+       );
+     }
+   }
+
+
+
+
+
+2nd page
+
+
+
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: TravelUI(),
+    );
+  }
+}
+class TravelUI extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(color: Colors.teal[900]),
+          Center(
+            child: Container(
+              width: 300,
+              height: 550,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                    child: Image.network(
+                      "https://images.unsplash.com/photo-1501785888041-af3ef285b470", height: 300,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      "People don’t take trips,\ntrips take people",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      "To get the best of your adventure you just need to leave and go where you like, we waiting for you.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 20, right: 20),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.teal[900],
+                        child: Icon(Icons.arrow_forward, color: Colors.white),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 220,
+            right: 210,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "10:09",
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.signal_cellular_alt, size: 16),
+                    SizedBox(width: 5),
+                    Icon(Icons.wifi, size: 16),
+                    SizedBox(width: 5),
+                    Icon(Icons.battery_full, size: 16),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+3rd page
+
+
+
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: TravelUI(),
+    );
+  }
+}
+class TravelUI extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(color: Colors.teal[900]),
+          Center(
+            child: Container(
+              width: 300,
+              height: 550,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Column(
+                children: [
+
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Image.network(
+                     "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+                      height: 300,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      "Get ready for your lifetime journey",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      "To get the best of your adventure you just need to leave and go where you like, we waiting for you.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 20),
+                    child: Center(
+                      child: Container(
+                        width: 120,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.teal[900],
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Get Start",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 215,
+            right: 220,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "10:09",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.signal_cellular_alt, size: 16),
+                    SizedBox(width: 5),
+                    Icon(Icons.wifi, size: 16),
+                    SizedBox(width: 5),
+                    Icon(Icons.battery_full, size: 16),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
