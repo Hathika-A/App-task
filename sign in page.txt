@@ -1,0 +1,263 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Step1(),
+  ));
+}
+String gender="";
+Widget textField(string hint){
+  return Paadding(
+    padding: EdgeInsets.symmetric(vertical: 8),
+    child:TextField(
+      decoration: InputDecoration(
+        hintText: hint,
+        border: OutlineInputBorder(
+          borderRadius:BorderRadius.circular(10),
+        ),
+      ),
+    ),
+  );
+}
+widget uploadBox(String text){
+  return Container(
+    height:120,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: Colors.grey[300],
+      borderRadius:Borderradius.circular(10),
+    ),
+    child:Center(child:Text(text)),
+  );
+}
+Widget topHeader(String step) {
+  return Column(
+    children: [
+      SizedBox(height: 10),
+      Icon(Icons.groups, size: 50, color: Colors.teal),
+      Text("recruitment", style: TextStyle(fontSize: 18)),
+      SizedBox(height: 10),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text("Candidate Details"),
+          Text(step),
+        ],
+      ),
+    ],
+  );
+}
+
+class Step1 extends StatefulWidget {
+  @override
+  _Step1State createState() => _Step1State();
+}
+
+class _Step1State extends State<Step1> {
+
+  String selectedDegree = "BE";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: ListView(
+          children: [
+            topHeader("Step 1/3"),
+
+            textField("Candidate Name"),
+            textField("Candidate Email"),
+
+            DropdownButtonFormField(
+              value: selectedDegree,
+              items: ["BE", "BTech", "BSc"]
+                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                  .toList(),
+              onChanged: (val) {
+                setState(() {
+                  selectedDegree = val.toString();
+                });
+              },
+              decoration: InputDecoration(
+                labelText: "Degree",
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            textField("Year of Passout"),
+            textField("Candidate College"),
+            textField("Candidate Contact"),
+            textField("Department"),
+
+            SizedBox(height: 10),
+            Text("Gender"),
+
+            Row(
+              children: [
+                Radio(
+                  value: "Male",
+                  groupValue: gender,
+                  onChanged: (val) {
+                    setState(() {
+                      gender = val.toString();
+                    });
+                  },
+                ),
+                Text("Male"),
+                Radio(
+                  value: "Female",
+                  groupValue: gender,
+                  onChanged: (val) {
+                    setState(() {
+                      gender = val.toString();
+                    });
+                  },
+                ),
+                Text("Female"),
+              ],
+            ),
+
+            SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => Step2()),
+                );
+              },
+              child: Text("Next"),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Step2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: ListView(
+          children: [
+            topHeader("Step 2/3"),
+
+            textField("Batch"),
+            textField("Reg No"),
+
+            SizedBox(height: 10),
+            Text("Candidate Profile"),
+            uploadBox("Upload User Photo"),
+
+            SizedBox(height: 10),
+            Text("Candidate Id Image"),
+            uploadBox("Upload ID Card"),
+
+            SizedBox(height: 20),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Previous"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => Step3()),
+                    );
+                  },
+                  child: Text("Next"),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+class Step3 extends StatelessWidget {
+
+  void showSuccess(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.check_circle, color: Colors.green, size: 60),
+            SizedBox(height: 10),
+            Text("Your Registration Successfully Completed!"),
+            SizedBox(height: 15),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("OK"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: ListView(
+          children: [
+            topHeader("Step 3/3"),
+
+            SizedBox(height: 10),
+            Text("Candidate Resume"),
+            uploadBox("Upload User Resume"),
+
+            SizedBox(height: 10),
+            Text("Candidate Aadhaar Card"),
+            uploadBox("Upload Aadhaar Card"),
+
+            SizedBox(height: 20),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Previous"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    showSuccess(context);
+                  },
+                  child: Text("Submit"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
